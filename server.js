@@ -10,16 +10,16 @@ var db = require("./models");
 var PORT = 3000;
 var app = express();
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars')
 app.use(logger("dev"))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars')
 
 
 
 
-console.log("if you like Hockey, you will love this website");
+console.log("if you like Hockey, you will love this scraper");
 mongoose.connect("mongodb://localhost/news_db")
 app.get("/scrape", function(req, res) {
 
@@ -35,13 +35,17 @@ app.get("/scrape", function(req, res) {
     results.push({
       title: title,
       link: link
-     });
-    
-  });
+    });
+  
+  
+});
     console.log(results);
-    res.send("index", results)
+    res.json(results)
+});
+    
+   
  });
- });
+
  app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
 })

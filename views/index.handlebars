@@ -1,0 +1,21 @@
+<h1></h1>
+    <button class = "scrape">Scrape new articles</button>
+    <button class = "delete">Delete article</button>
+
+<h3>ARTICLES</h3>
+
+<ul>
+  {{#each article}}
+  	<li>
+  	   <p>ID: {{this.headline}}</p>
+       <p>Task: {{this.summary}}</p>
+       <p>Task: {{this.url}}</p>
+  	</li>
+  {{/each}}
+</ul>
+
+<form action="/" method="POST">
+	<textarea type="text" name="comment"></textarea>
+
+	<button type="submit">Submit</button>
+</form>
